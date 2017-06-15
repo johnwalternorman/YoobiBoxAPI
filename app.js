@@ -12,8 +12,8 @@ app.post('/', function (req, res) {
   var PostName;
 
   GetName = req.query.firstname;
-  PostName = req.body.name;
-  res.send(GetName + " " + lastName);
+  PostName = req.body.lastname;
+  res.send(GetName + " " + PostName);
 
 })
 
