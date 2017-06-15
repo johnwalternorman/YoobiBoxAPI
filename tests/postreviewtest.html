@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Simple login</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+
+    $(document).ready(function(){
+        var user,pass;
+        $("#btnPostReview").click(function(){
+          user=$("#product").val();
+          pass=$("#review").val();
+          $.post("http://localhost:8000/postreview",{product: user,review: pass}, function(data){
+        
+            $("#returnedData").html(data);
+               
+          });
+        });
+      });
+
+      
+    </script>
+  </head>
+  <body>
+
+        <h1>Endpoint test: postreview</h1>
+        <div id="testForm">
+          Product: <input type="text" id="product" size="40"><br>
+          Review: <input type="text" id="review" size="40"><br>
+          <input type="button" id="btnPostReview" value="Post Review">
+        </div>
+
+        <h1>Returned Data</h1>
+        <div id="returnedData">
+        </div>
+  </body>
+</html>
