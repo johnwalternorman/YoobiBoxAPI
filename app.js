@@ -1,13 +1,9 @@
 const express = require('express')
 const bodyParser = require("body-parser");
-const app = express()
-
-var GetName;
-var PostName;
+const app = express();
 
 
-
-app.post('/test', function (req, res) {
+app.all('/test', function (req, res) {
 
   var GetName;
   var PostName;
