@@ -1,8 +1,20 @@
 const express = require('express')
 const app = express()
 
+var GetName;
+var PostName;
+
+
+
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+
+  var GetName;
+  var PostName;
+
+  GetName = req.param.name;
+  PostName = req.body.name;
+  res.send(GetName + " " + PostName);
+
 })
 
 app.listen(8000, function () {
