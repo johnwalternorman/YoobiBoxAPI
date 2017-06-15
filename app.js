@@ -11,7 +11,7 @@ app.post('/', function (req, res) {
   var GetName;
   var PostName;
 
-  GetName = req.param.name;
+  GetName = req.query.name;
   PostName = req.body.name;
   res.send(GetName + " " + PostName);
 
