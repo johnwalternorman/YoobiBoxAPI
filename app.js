@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require("body-parser");
 const app = express()
 
 var GetName;
@@ -6,14 +7,14 @@ var PostName;
 
 
 
-app.post('/', function (req, res) {
+app.post('/test', function (req, res) {
 
   var GetName;
   var PostName;
 
-  GetName = req.query.firstname;
+  //GetName = req.query.firstname;
   PostName = req.body.lastname;
-  res.send(GetName + " " + PostName);
+  res.send(PostName);
 
 })
 
