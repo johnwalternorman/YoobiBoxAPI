@@ -4,18 +4,33 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
     <script>
 
-    $(document).ready(function(){
-        var user,pass;
-        $("#btnPostReview").click(function(){
-          user=$("#product").val();
-          pass=$("#review").val();
-          $.post("/postreview",{product: user,review: pass}, function(data){
-        
-            $("#returnedData").html(data);
-               
+        $(document).ready(function(){
+
+            //### Hide Results Div until data is returned
+             $("#returnedData").hide();
+
+            //### create variables to hold form fields
+            var product;
+            var review;
+
+            //### create handler for form submission
+            $("#btnPostReview").click(function(){
+
+              //### Grab product value
+              product=$("#product").val();
+              //### Grab review value
+              review=$("#review").val();
+
+              //### Post values as JSON to /postreview endpoint
+              $.post("/postreview",{"product": product,"review": review}, function(data){
+            
+                //### Display Data in the returned data div
+                $("#returnedData").html($("#returnedData").html() + data);
+                $("#returnedData").show();
+                  
+              });
+            });
           });
-        });
-      });
 
       
     </script>
@@ -29,8 +44,9 @@
           <input type="button" id="btnPostReview" value="Post Review">
         </div>
 
-        <h1>Returned Data</h1>
+        
         <div id="returnedData">
+          <h1>Returned Data</h1>
         </div>
   </body>
 </html>
