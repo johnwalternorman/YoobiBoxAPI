@@ -9,7 +9,7 @@
         $("#btnPostReview").click(function(){
           user=$("#product").val();
           pass=$("#review").val();
-          $.post("http://localhost:8000/postreview",{product: user,review: pass}, function(data){
+          $.post("/postreview",{product: user,review: pass}, function(data){
         
             $("#returnedData").html(data);
                
