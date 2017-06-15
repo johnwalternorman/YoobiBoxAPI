@@ -44,21 +44,21 @@ var directoryPath = __dirname + "/";
 
 //### Begin Routes ####
 
-//[Route: /] example: http://localhost:8000
+//### [Route: /] example: http://localhost:8000
 app.get('/',function(request,response){
   console.log(directoryPath + " ###");
   response.sendFile(directoryPath + "index.html");
 });
 
-//[Route: /tests/postreviewtest] example: http://localhost:8000/tests/postreviewtest
+//### [Route: /tests/postreviewtest] example: http://localhost:8000/tests/postreviewtest
 app.get('/tests/postreviewtest',function(request,response){
   response.sendFile(directoryPath + "tests/postreviewtest.html");
 });
 
-//[Route: /postreview] example: http://localhost:8000/postreview
-// Example Test using POSTMAN:  
-// Method = POST, URL = http://localhost:8000/postreview, Body = Raw, data to submit = {"product": "Put a product name here","review": "put product review here"}
-// Content-type = JSON(application/json)
+//### [Route: /postreview] example: http://localhost:8000/postreview
+//### Example Test using POSTMAN:  
+//### Method = POST, URL = http://localhost:8000/postreview, Body = Raw, data to submit = {"product": "Put a product name here","review": "put product review here"}
+//### Content-type = JSON(application/json)
 app.post('/postreview',function(request,response)
 {
   
@@ -76,11 +76,9 @@ app.post('/postreview',function(request,response)
   response.statusCode = 200; 
 
   //### send posted data back to the sender, This is not neccessary, just for now nothing else to send them 
-  //except for maybe a status message.  JSON.stringify is used to ensure postData is in string format
-  response.end(JSON.stringify(postData));
-
+  //### except for maybe a status message.  JSON.stringify is used to ensure postData is in string format
   //### Complete response
-  //response.end();
+  response.end(JSON.stringify(postData));
 
 });
 
