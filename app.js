@@ -57,8 +57,10 @@ app.get('/tests/postreviewtest',function(request,response){
 
 //### [Route: /postreview] example: http://localhost:8000/postreview
 //### Example Test using POSTMAN:  
-//### Method = POST, URL = http://localhost:8000/postreview, Body = Raw, data to submit = {"product": "Put a product name here","review": "put product review here"}
+//### Method = POST, URL = http://localhost:8000/postreview, Body = Raw, data to submit = {"ProductCategory":"Movie","ProductSubCategory":"Action","ProductName":"Star Wars Rogue One","ProductRating":10,"ProductReview":"Awesome movie!!! Great Characters and Actors, nice to see Star Wars from more of an every day perspective"}
 //### Content-type = JSON(application/json)
+
+
 app.post('/postreview',function(request,response)
 {
   
@@ -66,11 +68,16 @@ app.post('/postreview',function(request,response)
   var postData = request.body;
 
   //### Get posted data values
-  var product=postData.product;
-  var review=postData.review;
+  var ProductCategory = postData.ProductCategory;
+  var ProductSubCategory = postData.ProductSubCategory;
+  var ProductName = postData.ProductName;
+  var ProductRating = postData.ProductRating;
+  var ProductReview = postData.ProductReview;
+  
 
   //### Write posted values to the console
-  console.log(product + " : " + review);
+  console.log(ProductName + " : " + ProductRating);
+  console.log("AllData" + " : " + JSON.stringify(postData));
 
   //### Set HTTP Response Code (200 = ok, 404 = file not found, 500 = error)
   response.statusCode = 200; 

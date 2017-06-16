@@ -4,29 +4,31 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
 
-        $(document).ready(function(){
+        $(document).ready(function()
+              {
 
-            //### Hide Results Div until data is returned
-             $("#returnedData").hide();
+                //### Hide Results Div until data is returned
+                $("#returnedData").hide();
 
-            //### create variables to hold form fields
-            var product;
-            var review;
+                //### create variables to hold form fields
 
-            //### create handler for form submission
-            $("#btnPostReview").click(function(){
+                //### create handler for form submission
+                $("#btnPostReview").click(function(){
 
-              //### Grab product value
-              product=$("#product").val();
-              //### Grab review value
-              review=$("#review").val();
+                //### Grab Values
+                var ProductCategory=$("#productCategory").val();
+                var ProductSubCategory=$("#productSubCategory").val();
+                var ProductName=$("#productName").val();
+                var ProductRating=$("#productRating").val();
+                var ProductReview=$("#productReview").val();
 
-              //### Post values as JSON to /postreview endpoint
-              $.post("/postreview",{"product": product,"review": review}, function(data){
-            
-                //### Display Data in the returned data div
-                $("#returnedData").html($("#returnedData").html() + data);
-                $("#returnedData").show();
+                //### Post values as JSON to /postreview endpoint
+                $.post("/postreview",{"ProductCategory":ProductCategory,"ProductSubCategory":ProductSubCategory,"ProductName":ProductName,"ProductRating":ProductRating,"ProductReview":ProductReview}, function(data)
+                {
+              
+                  //### Display Data in the returned data div
+                  $("#returnedData").html($("#returnedData").html() + data);
+                  $("#returnedData").show();
                   
               });
             });
@@ -39,11 +41,14 @@
 
         <h1>Endpoint test: postreview</h1>
         <div id="testForm">
-          Product: <input type="text" id="product" size="60"><br>
-          Review: <textarea id="review"></textarea><br>
+              
+          Product Category: <input type="text" id="productCategory" size="60"><br>
+          Product SubCategory: <input type="text" id="productSubCategory" size="60"><br>
+          Product Name: <input type="text" id="productName" size="60"><br>
+          Product Rating(1-10): <input type="text" id="productRating" size="2"><br>
+          Product Review: <textarea id="Productreview"></textarea><br>
           <input type="button" id="btnPostReview" value="Post Review">
         </div>
-
         
         <div id="returnedData">
           <h1>Returned Data</h1>
