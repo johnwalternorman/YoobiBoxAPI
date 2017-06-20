@@ -159,6 +159,12 @@ function processCreate(request, response)
         ProductName = postData.ProductName;
         UserName = postData.UserName;
 
+        //### Verify UserName is part of the post before continuing
+        if(!UserName)
+        {
+          response.end(JSON.stringify({"error":"UserName must be part of the post"}))
+        }
+
         collection = ["categories","subcategories","products","reviews"];
 
         query =[{"ProductCategory":ProductCategory},{"ProductCategory":ProductCategory,"ProductSubCategory":ProductSubCategory},{"ProductCategory":ProductCategory,"ProductSubCategory":ProductSubCategory,"ProductName":ProductName},{"ProductCategory":ProductCategory,"ProductSubCategory":ProductSubCategory,"ProductName":ProductName,"UserName":UserName}];
@@ -205,6 +211,12 @@ function processUpdateOrDelete(request, response, action)
 
     //### Store UserName from querystring
     var UserName = postData.UserName;
+
+    //### Verify UserName is part of the post before continuing
+    if(!UserName)
+    {
+      response.end(JSON.stringify({"error":"UserName must be part of the post"}))
+    }
 
     //### Create Filter
     var filter = {"ProductCategory":ProductCategory,"ProductSubCategory":ProductSubCategory,"ProductName":ProductName,"UserName":UserName};
