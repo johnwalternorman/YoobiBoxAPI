@@ -1,6 +1,5 @@
 
 /*
-
 ### Example Test using POSTMAN ###
 Method = POST,
 URL = http://localhost:8000/create?collection=categories 
@@ -8,9 +7,6 @@ Body = Raw
 data to submit = {"ProductCategory":"Movie"}
 Content-type = JSON(application/json)
 (Then chage the URL to http://localhost:8000/read?collection=categories and re-send the request to see the category you just created)
-
-Full Review Object Example : {"ProductCategory":"Movie","ProductSubCategory":"Comedy","ProductName":"Some Funny Movie","ProductRating":10,"ProductReview":"Very Funny Movie","UserName":"J"}
-
 */
 
 //### Directory Path
@@ -20,7 +16,7 @@ var directoryPath = __dirname + "/";
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
-var BLReviews = require(directoryPath + 'BusinessLayer/BLReviews.js');
+var BLReviews = require('./BLReviews.js');
 
 //### Use BodyParsers
 app.use(bodyParser.urlencoded({extended:false}));
@@ -32,6 +28,7 @@ var objBLReviews = new BLReviews({},{});
 
 //### [Route: /] example: http://localhost:8000
 app.get('/',function(request,response){
+  console.log(directoryPath + " ###");
   response.sendFile(directoryPath + "index.html");
 });
 
@@ -62,10 +59,12 @@ app.post('/delete',function(request,response)
 
 //####################################### End Routes ##################################################
 
+
 //### Start Application on port 8000
 app.listen(8888,function()
 {
   //### Log that the Application has started
   console.log("Started on PORT 8888");
 });
+
 
