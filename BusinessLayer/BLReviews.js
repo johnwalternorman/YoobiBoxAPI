@@ -129,6 +129,7 @@ BLReviews.prototype.processUpdateOrDelete = function(request,response,action)
     if(!UserName)
     {
       response.end(JSON.stringify({"error":"UserName must be part of the post"}))
+      return;
     }
 
     //### Create Filter

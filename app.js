@@ -30,35 +30,56 @@ var objBLReviews = new BLReviews({},{});
 
 //####################################### Begin Routes ##################################################
 
+//############## Default Route
 //### [Route: /] example: http://localhost:8000
 app.get('/',function(request,response){
   response.sendFile(directoryPath + "index.html");
 });
 
+//################ Begin Test Routes ######################
 //### [Route: /tests/postreviewtest] example: http://localhost:8000/tests/postreviewtest
 app.get('/tests/postreviewtest',function(request,response){
   response.sendFile(directoryPath + "tests/postreviewtest.html");
 });
 
+app.get('/tests/automatedTest',function(request,response){
+  response.sendFile(directoryPath + "tests/automatedTests.html");
+});
+
+app.get('/tests/testClass',function(request,response){
+  response.sendFile(directoryPath + "tests/testClass.js");
+});
+//################ End Test Routes ######################
+
+//################ Begin CRUD Routes ######################
 app.post('/create',function(request,response)
 {
   objBLReviews.processCreate(request, response)
+
+ //### Creation Path : /create -> BLReviews.processCreate -> DLReviews.preventDuplicates - > DlReviews.runCreate(as callback from preventDuplicates)
 });
 
 app.post('/read',function(request,response)
 {
     objBLReviews.processRead(request, response);
+
+    //### Read Path : /read -> BLReviews.processRead -> DLReviews.runRead 
 });
 
 app.post('/update',function(request,response)
 {
     objBLReviews.processUpdateOrDelete(request, response, "update");
+
+    //### Update Path : /update -> BLReviews.processUpdateorDelete -> DLReviews.runUpdate 
 });
 
 app.post('/delete',function(request,response)
 {
      objBLReviews.processUpdateOrDelete(request, response, "delete");
+
+     //### Delete Path : /delete -> BLReviews.processUpdateorDelete -> DLReviews.runDelete 
 });
+//################ Begin CRUD Routes ######################
 
 //####################################### End Routes ##################################################
 
