@@ -171,14 +171,14 @@ DLReviews.prototype.runUpdate = function(filter, postData,collectionName,respons
                         //### Send Query Results to the caller
                         localResponse.statusCode = 200; 
                         //### Send Caller a Status Object
-                        localResponse.end(JSON.stringify({"status":"Error","message":"Document updated"}));
+                        localResponse.end(JSON.stringify({"status":"Success","message":"Document updated"}));
                   }
                   else
                   {
                         //### Send Query Results to the caller
                         localResponse.statusCode = 200; 
                         //### Send Caller a Status Object
-                        localResponse.end(JSON.stringify({"status":"Success","message":"Document was found but not updated"}));
+                        localResponse.end(JSON.stringify({"status":"Error","message":"Document was found but not updated"}));
                   }
               }
               else
