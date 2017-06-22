@@ -1,66 +1,68 @@
 <html>
   <head>
-    <title>Product Review API Automated Tests</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-     <script src="testClass"></script>
-    <script>
+        <title>Product Review API Automated Tests</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="testClass"></script>
+        <script>
 
-        //### Create Callback Object
-        var objTestFunctions = new testFunctions();
+            //### Create Callback Object
+            var objTestFunctions = new testFunctions();
 
-        $(document).ready(function()
-              {
+                $(document).ready(function()
+                    {
 
-                 //### Hide Results Div until data is returned
-                 $("#returnedData").hide();
-                
-                 //### create handlers for form submission
+                        //### Hide Results Div until data is returned
+                        $("#returnedData").hide();
+                        
+                        //### Run Tests
+                        
+                        //### Start Fresh with Test Document Deleted
+                        objTestFunctions.reviewCallBack("delete");
 
-                   objTestFunctions.reviewCallBack("delete");
-               
-                   objTestFunctions.reviewCallBack("create");
-               
-                   objTestFunctions.reviewCallBack("update");
-                
-                   objTestFunctions.readCallBack("read");
+                        //### Begin Tests
+                        var cvar = setTimeout(function(){$("#returnedData").html($("#returnedData").html() + "Should say 1 documents inserted : ");objTestFunctions.reviewCallBack("create");}, 3000);
 
-                   objTestFunctions.reviewCallBack("delete");
+                        var cvar2 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say item already exists : ");objTestFunctions.reviewCallBack("create");}, 10000);
 
-                   objTestFunctions.readCallBack("read");
+                        var uvar = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say document updated : ");objTestFunctions.reviewCallBack("update");}, 12000);
 
-                   objTestFunctions.reviewCallBack("update");
-                
-              });
+                        var dvar = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say item deleted : ");objTestFunctions.reviewCallBack("delete");}, 14000);
 
-    </script>
+                        var dvar2 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say 1 item deleted : ");objTestFunctions.reviewCallBack("delete");}, 15000);
+
+                        var uvar2 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say Document to update was not found : ");objTestFunctions.reviewCallBack("update");}, 18000);
+
+                        var uvar3 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say Document to update was not found : ");objTestFunctions.reviewCallBack("update");}, 21000);
+
+                        var cvar2 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say 1 documents inserted : ");objTestFunctions.reviewCallBack("create");}, 22000);
+
+                        var rvar = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should return 1 document : ");objTestFunctions.readCallBack("read");}, 26000);
+
+                        var dvar3 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say item deleted : ");objTestFunctions.reviewCallBack("delete");}, 27000);
+
+                        var rvar2 = setTimeout(function(){$("#returnedData").html($("#returnedData").html() +"Should say No documents returned : ");objTestFunctions.readCallBack("read");}, 28000);
+                        
+                    });
+
+        </script>
   </head>
   <body>
-
-    
          <div id="returnedData">
           <h1>Returned Data</h1>
         </div>
 
-        <h1>Endpoint test: Post, Update, or Delete a review - /[create/update/delete]?collection=reviews</h1>
         <div id="testForm">  
-          Product Category: <input type="text" id="productCategory" value="TestCategory" size="60"><br>
-          Product SubCategory: <input type="text" id="productSubCategory" value="TestSubCategory" size="60"><br>
-          Product Name: <input type="text" id="productName" value="TestProduct" size="60"><br>
-          Product Rating(1-10): <input type="text" id="productRating" value="10" size="2"><br>
-          Product Review: <textarea id="Productreview">testing</textarea><br>
-          <input type="hidden" id="UserName" value="Tester">
+            <input type="hidden" id="productCategory" value="TestCategory" size="60">
+            <input type="hidden" id="productSubCategory" value="TestSubCategory" size="60">
+            <input type="hidden" id="productName" value="TestProduct" size="60">
+            <input type="hidden" id="productRating" value="10" size="2">
+            <input type="hidden" id="productReview" value="Test Review">
+            <input type="hidden" id="UserName" value="Tester">
         </div>
 
-        <h1>Endpoint test: Read Documents - /read?collection=[CollectionName]</h1>
         <div id="testFormR">  
-          <select id="collection">
-            <option value="categories">Categories</option>
-            <option value="subcategories">SubCategories</option>
-            <option value="products">Products</option>
-            <option selected value="reviews">Reviews</option>
-          </select>
-          <br>
-          Filter: <input type="text" id="filter" value='{"ProductCategory":"TestCategory","ProductSubCategory":"TestSubCategory","ProductName":"TestProduct","ProductRating":"10","UserName":"Tester"}' size="60"><br>
+            <input type="hidden" id="collection" value="reviews">
+            <input type="hidden" id="filter" value='{"ProductCategory":"TestCategory","ProductSubCategory":"TestSubCategory","ProductName":"TestProduct","ProductRating":"10","UserName":"Tester"}' size="60"><br>
         </div>
         
   </body>

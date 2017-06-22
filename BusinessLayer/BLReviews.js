@@ -128,7 +128,7 @@ BLReviews.prototype.processUpdateOrDelete = function(request,response,action)
     //### Verify UserName is part of the post before continuing
     if(!UserName)
     {
-      response.end(JSON.stringify({"error":"UserName must be part of the post"}))
+      response.end(JSON.stringify({"status":"Error","message":"UserName must be part of the post"}))
       return;
     }
 

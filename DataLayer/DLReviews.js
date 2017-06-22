@@ -60,7 +60,8 @@ DLReviews.prototype.preventDuplicates = function(query, collectionName, data, ca
                     {
                       //### Set HTTP Response Code (200 = ok, 404 = file not found, 500 = error)
                       response.statusCode = 200;
-                      response.end(JSON.stringify({'error':'Item Already Exists'}));
+                      response.end(JSON.stringify({"status":"Error","message":'Item Already Exists'}));
+                      return;
                     }
                   });
               }
@@ -75,7 +76,7 @@ DLReviews.prototype.preventDuplicates = function(query, collectionName, data, ca
                     {
                       //### Set HTTP Response Code (200 = ok, 404 = file not found, 500 = error)
                       response.statusCode = 200; 
-                      response.end(JSON.stringify({'error': 'The Mandatory Upstream Data such as ProductCategory,ProductSubCategory, or ProductName does not exist. You can create the neccessary upstream data category/subcategory/productname by sending an object such as {"ProductCategory":"Movie"} using POST to /create?collection=categories or sending an object such as {"ProductCategory":"Movie","ProductSubCategory":"Sci-Fi"} using POST to /create?collection=subcategories or sending an object such as {"ProductCategory":"Movie","ProductSubCategory":"Action","ProductName":"Star Wars"} using post to /create?collection=products'}));
+                      response.end(JSON.stringify({"status":"Error","message":'The Mandatory Upstream Data such as ProductCategory,ProductSubCategory, or ProductName does not exist. You can create the neccessary upstream data category/subcategory/productname by sending an object such as {"ProductCategory":"Movie"} using POST to /create?collection=categories or sending an object such as {"ProductCategory":"Movie","ProductSubCategory":"Sci-Fi"} using POST to /create?collection=subcategories or sending an object such as {"ProductCategory":"Movie","ProductSubCategory":"Action","ProductName":"Star Wars"} using post to /create?collection=products'}));
                     }
                   });
                }
@@ -106,10 +107,11 @@ DLReviews.prototype.runCreate = function(data,collectionName,response,url)
                     //### Set HTTP Response Code (200 = ok, 404 = file not found, 500 = error)
                     localResponse.statusCode = 200; 
                     //### Send Caller a Documents Inserted object 
-                    localResponse.end(JSON.stringify({"status":document.insertedCount.toString() + " documents inserted"}));
+                    localResponse.end(JSON.stringify({"status":"Success","message":document.insertedCount.toString() + " documents inserted"}));
                 });
       });
 };
+
 
 DLReviews.prototype.runRead = function(query, collectionName, response)
 {
@@ -138,7 +140,7 @@ DLReviews.prototype.runRead = function(query, collectionName, response)
               {
                   //### There were not documents found meeting the search criteria, send caller an error object letthing them know
                   response.statusCode = 200; 
-                  response.end(JSON.stringify({'error':' No documents returned'}));
+                  response.end(JSON.stringify({"status":"Error","message":"No documents returned"}));
               }
           });
       });
@@ -157,25 +159,33 @@ DLReviews.prototype.runUpdate = function(filter, postData,collectionName,respons
           var collection = db.collection(localCollectionName);
 
           //### Execute Query for Documents
-
-          collection.update(filter,postData,function(err,results)
+          collection.updateOne(filter,postData,function(err,results)
           {
-               assert.equal(err, null);
-              
+              assert.equal(err, null);
               //### If there are documents, then send them back to the caller
               //### If there are results, let caller know there item was deleted
-              if(results.length !=0)
+              if(results.matchedCount !=0)
               {
-                  //### Send Query Results to the caller
-                  localResponse.statusCode = 200; 
-                  //### Send Caller a Status Object
-                  localResponse.end(JSON.stringify({"status":"Document updated"}));
+                  if(results.modifiedCount !=0)
+                  {
+                        //### Send Query Results to the caller
+                        localResponse.statusCode = 200; 
+                        //### Send Caller a Status Object
+                        localResponse.end(JSON.stringify({"status":"Error","message":"Document updated"}));
+                  }
+                  else
+                  {
+                        //### Send Query Results to the caller
+                        localResponse.statusCode = 200; 
+                        //### Send Caller a Status Object
+                        localResponse.end(JSON.stringify({"status":"Success","message":"Document was found but not updated"}));
+                  }
               }
               else
               {
                   //### There were not documents found meeting the search criteria, send caller an error object letthing them know
                   localResponse.statusCode = 200;
-                  localResponse.end(JSON.stringify({'error':' No document was updated'}));
+                  localResponse.end(JSON.stringify({"status":"Error","message":"Document to update was not found"}));
               }
           });
       });
@@ -203,13 +213,13 @@ DLReviews.prototype.runDelete = function(filter, postData,collectionName,respons
                   //### Send Query Results to the caller
                   localResponse.statusCode = 200; 
                   //### Send Caller a Status Object
-                  localResponse.end(JSON.stringify({"status":"Document deleted"}));
+                  localResponse.end(JSON.stringify({"status":"Success","message":"Document deleted"}));
               }
               else
               {
                   //### There were not documents found meeting the search criteria, send caller an error object letthing them know
                   localResponse.statusCode = 200;
-                  localResponse.end(JSON.stringify({'error':' No document was deleted'}));
+                  localResponse.end(JSON.stringify({"status":"Error","message": "No document was deleted"}));
               }
           });
       });
