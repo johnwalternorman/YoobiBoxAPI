@@ -73,7 +73,7 @@
                       //### Grab Values
                       var Collection=$("#collection").val();
                       var Filter=JSON.parse($("#filter").val());
-                      var URL = "http://localhost:8888/read?collection=" + Collection;
+                      var URL = "/read?collection=" + Collection;
                       //### Post values as JSON to /postreview endpoint
                       $.post(URL,Filter, function(data)
                       {

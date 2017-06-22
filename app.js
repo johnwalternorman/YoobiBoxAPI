@@ -3,11 +3,11 @@
 
 ### Example Test using POSTMAN ###
 Method = POST,
-URL = http://localhost:8000/create?collection=categories 
+URL = http://localhost:8888/create?collection=categories 
 Body = Raw
 data to submit = {"ProductCategory":"Movie"}
 Content-type = JSON(application/json)
-(Then chage the URL to http://localhost:8000/read?collection=categories and re-send the request to see the category you just created)
+(Then chage the URL to http://localhost:8888/read?collection=categories and re-send the request to see the category you just created)
 
 Full Review Object Example : {"ProductCategory":"Movie","ProductSubCategory":"Comedy","ProductName":"Some Funny Movie","ProductRating":10,"ProductReview":"Very Funny Movie","UserName":"J"}
 
@@ -31,13 +31,13 @@ var objBLReviews = new BLReviews({},{});
 //####################################### Begin Routes ##################################################
 
 //############## Default Route
-//### [Route: /] example: http://localhost:8000
+//### [Route: /] example: http://localhost:8888
 app.get('/',function(request,response){
   response.sendFile(directoryPath + "index.html");
 });
 
 //################ Begin Test Routes ######################
-//### [Route: /tests/postreviewtest] example: http://localhost:8000/tests/postreviewtest
+//### [Route: /tests/postreviewtest] example: http://localhost:8888/tests/postreviewtest
 app.get('/tests/postreviewtest',function(request,response){
   response.sendFile(directoryPath + "tests/postreviewtest.html");
 });

@@ -25,4 +25,4 @@ API to facilitate creating products/company pages and reviews for them.
  
  nodejs app.js
  
- ### now go to http://localhost:8000 in your browser
+ ### now go to http://localhost:8888 in your browser
