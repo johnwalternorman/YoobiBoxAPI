@@ -80,22 +80,6 @@ app.config(function($routeProvider){
              controller: "loginController",
              templateUrl : "views/standard/login.html"
     })
-    .when('/submitreview', {
-             controller: "CUDReviewController",
-             templateUrl : "views/reviews/submitReview.html"
-    })
-     .when('/createcategory', {
-             controller: "CUDReviewController",
-             templateUrl : "views/reviews/createCategory.html"
-    })
-     .when('/createsubcategory', {
-             controller: "CUDReviewController",
-             templateUrl : "views/reviews/createsubcategor.html"
-    })
-     .when('/createProduct', {
-             controller: "CUDReviewController",
-             templateUrl : "views/reviews/login.html"
-    })
     //.when(args, cf(args));
     .otherwise({
         controller: "404",
