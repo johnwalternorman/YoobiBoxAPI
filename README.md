@@ -26,3 +26,9 @@ API to facilitate creating products/company pages and reviews for them.
  nodejs app.js
  
  ### now go to http://localhost:8888 in your browser
+
+
+ --Addition Created on 28 June 2017
+
+    The root of the ExpressJS Server side application is app.js in the root directory.
+    The root of the AngularJS 1.x client side application is index.html in the root directory.
