@@ -77,6 +77,7 @@ DLReviews.prototype.preventDuplicates = function(query, collectionName, data, ca
                       //### Set HTTP Response Code (200 = ok, 404 = file not found, 500 = error)
                       response.statusCode = 200; 
                       response.end(JSON.stringify({"status":"Error","message":'The Mandatory Upstream Data such as ProductCategory,ProductSubCategory, or ProductName does not exist. You can create the neccessary upstream data category/subcategory/productname by sending an object such as {"ProductCategory":"Movie"} using POST to /create?collection=categories or sending an object such as {"ProductCategory":"Movie","ProductSubCategory":"Sci-Fi"} using POST to /create?collection=subcategories or sending an object such as {"ProductCategory":"Movie","ProductSubCategory":"Action","ProductName":"Star Wars"} using post to /create?collection=products'}));
+                      return;
                     }
                   });
                }
