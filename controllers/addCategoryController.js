@@ -4,7 +4,9 @@ app.controller('addCategoryController', function($scope, $http)
     
     $scope.postCategory = function()
     {
+            alert("adding Category");
             var newCategory ={ProductCategory: $scope.txtCategory};
+            alert(JSON.stringify(newCategory));
             $http.post("http://localhost:8888/create?collection=categories", JSON.stringify(newCategory), {headers: {'Content-Type': 'application/json'} })
             .then(function(response) 
             {

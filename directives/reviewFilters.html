@@ -1,15 +1,18 @@
+  <span style="font-size:30px;font-weight:bold">
+        Product Reviews </span><br>
+        <modalpopup modalbuttontext="'add review'" modalheadertext="'Add Category'" modalview="'./views/reviews/addCategory.html'" modalfootertext="'Footer'" modaldata="'data'"></modalpopup>
+    <hr>
   <!--// Filters //-->
       <!--// Display Reviews using the Reviews directive, found in the mainDirectives.js file //-->
     <span style="background-color: black;width:inherit;color:white;display:block;overflow:hidden;">Filters</span>
     <br>
     <!--// Category Filter //-->
     Category:
-    <select ng-model="category">
+     <select ng-model="category">
       <option ng-repeat="item in data" value="{{item.ProductCategory}}">
         {{item.ProductCategory}}
       </option>
     </select>
-
     <!--// Sub-Category Filter //-->
     Sub-Category:<select ng-model="subcategory">
       <option ng-repeat="item in data | filter:category" value="{{item.ProductSubCategory}}">

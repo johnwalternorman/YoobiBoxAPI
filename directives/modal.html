@@ -1,6 +1,6 @@
         <link rel="stylesheet" type="text/css" href="/css/modal.css">
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn">{{modalbuttontext}}</button>
+        <a id="myBtn">{{modalbuttontext}}</a>
 
         <!-- The Modal -->
         <div id="ModalPopUp" class="modal">
@@ -11,7 +11,7 @@
                     <h6>{{modalheadertext}}</h6>
                 </div>
                 <div class="modal-body">
-                    <div ng-include="modalview"></div>
+                    <div ng-include="modalview" ng-controller="addCategoryController"></div>
                 </div>
                 <div class="modal-footer">
                     {{modalfootertext}}
