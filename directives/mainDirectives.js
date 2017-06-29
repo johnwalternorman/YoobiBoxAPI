@@ -76,7 +76,7 @@ app.directive("modalpopup", function() {
             modalheadertext: '=',
             modalview: '=',
             modalfootertext: '=',
-            modaldata: '='      
+            modaldata: '='
         },
         templateUrl: '/directives/modal.html',
    };
