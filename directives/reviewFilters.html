@@ -1,0 +1,36 @@
+  <!--// Filters //-->
+      <!--// Display Reviews using the Reviews directive, found in the mainDirectives.js file //-->
+    <span style="background-color: black;width:inherit;color:white;display:block;overflow:hidden;">Filters</span>
+    <br>
+    <!--// Category Filter //-->
+    Category:
+    <select ng-model="category">
+      <option ng-repeat="item in data" value="{{item.ProductCategory}}">
+        {{item.ProductCategory}}
+      </option>
+    </select>
+
+    <!--// Sub-Category Filter //-->
+    Sub-Category:<select ng-model="subcategory">
+      <option ng-repeat="item in data | filter:category" value="{{item.ProductSubCategory}}">
+        {{item.ProductSubCategory}}
+      </option>
+    </select>
+
+    <!--// Product Filters //-->
+    Product:<select ng-model="productname">
+      <option ng-repeat="item in data | filter:subcategory" value="{{item.ProductName}}">
+        {{item.ProductName}}
+      </option>
+    </select>
+
+    <!--// Keyword Filter //-->
+    Product Review Keyword:
+    <input type="text" ng-model="productreview">
+    <br>
+    <!--// Results //-->
+    <br>
+    <span style="background-color: black;width:inherit;color:white;display:block;overflow:hidden;">Results</span>
+    <br>
+
+

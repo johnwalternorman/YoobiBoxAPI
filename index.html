@@ -1,9 +1,90 @@
-<html>
-    <head>
-        <title> Endpoint Listing </title>
-    </head>
-    <body>
-        Method PostReview (takes JSON object in the form of {"ProductCategory":"Movie","ProductSubCategory":"Comedy","ProductName":"Some Funny Movie","ProductRating":10,"ProductReview":"Very Funny Movie","UserName":"J"})
-        Test: <a href="/tests/postreviewtest"> Post Review Test</a>
-    </body>
+<!DOCTYPE html>
+<html lang="en" ng-app="YoobiBox" ng-controller="indexController">
+
+  <head>
+    <!--//  Begin Metadata Area //-->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--//  End Metadata Area //-->
+
+    <!--//  Begin third party frameworks to be loaded before HTML is rendered //-->
+        <!-- Bootstrp CSS - Latest compiled and minified CSS -->
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <!-- Bootstrap Library - Latest compiled JavaScript -->
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--//  End third party frameworks to be loaded before HTML is rendered //-->
+
+    <!--//  Begin custom scripts to be loaded before HTML is rendered //-->
+
+    <!--//  End custom scripts to be loaded before HTML is rendered //-->
+
+    <!--//  Begin custom CSS Style scripts to be loaded before HTML is rendered //-->
+        <link rel="stylesheet" type="text/css" href="/css/mainCSS.css">
+    <!--//  End custom CSS Style scripts to be loaded before HTML is rendered //-->
+
+  </head>
+
+  <body>
+    <!--// Begin Boostrap container Div //-->
+      <div class="container-fluid">
+          <!--//  Begin Header Area (optional, the header can also just be part of the content) //-->
+            <div ng-include="'./views/partials/header.html'"></div>
+          <!--//  End Header Area //-->
+
+          <!--//  Begin Navigation Area //-->
+            <div ng-include="'./views/partials/navigation.html'"></div>
+          <!--//  End Navigation Area //-->
+
+          <!--//#############  Begin Content Area #################//-->
+
+
+
+            <div ng-view></div>
+
+
+
+          <!--//##############  End Content Area ##################//-->
+
+          <!--//  Begin Footer Area (optional, the header can also just be part of the content) //-->
+            <div ng-include="'./views/partials/footer.html'"></div>
+          <!--//  End Footer Area //-->
+      <div>
+    <!--// End Boostrap container Div //-->
+  </body>
+
+  <!--//  Begin third party frameworks to be loaded after HTML is rendered //-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <!--//  End third party frameworks to be loaded after HTML is rendered //-->
+
+  <!--//  Begin custom scripts to be loaded after HTML is rendered //-->
+    <script src="/app/app.js"></script>
+    <script src="/clientRouting/ClientRouting.js"></script>
+  <!--//  End custom scripts to be loaded after HTML is rendered //-->
+
+  <!--//  Begin Directive scripts to be loaded after HTML is rendered //-->
+    <script src="/directives/mainDirectives.js"></script>
+  <!--//  End Directive scripts to be loaded after HTML is rendered //-->
+
+  <!--//  Begin Service scripts to be loaded after HTML is rendered //-->
+    <script src="/services/mainService.js"></script>
+    <script src="/services/getPathService.js"></script>
+  <!--//  End Service scripts to be loaded after HTML is rendered //-->
+
+  <!--//  Begin Filter scripts to be loaded after HTML is rendered //-->
+    <script src="/filters/mainFilters.js"></script>
+  <!--//  End Filter scripts to be loaded after HTML is rendered //-->
+
+  <!--//  Begin contollers to be loaded after HTML is rendered //-->
+    <script src="/controllers/404Controller.js"></script>
+    <script src="/controllers/indexController.js"></script>
+    <script src="/controllers/loginController.js"></script>
+    <script src="/controllers/reviewsController.js"></script>
+    <script src="/controllers/contentController.js"></script>
+    <script src="/controllers/standardController.js"></script>
+    <script src="/controllers/addCategoryController.js"></script>
+  <!--//  End contollers to be loaded after HTML is rendered //-->
+
 </html>

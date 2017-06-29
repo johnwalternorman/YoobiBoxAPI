@@ -5,10 +5,8 @@ var directoryPath = __dirname + "/";
 var DLReviews = require(directoryPath + '../DataLayer/DLReviews.js');
 
 //### Constructor
-function BLReviews(request,response)
+function BLReviews()
 {
-    this.request = request;
-    this.response = response;
     this.objDLReviews = new DLReviews({});
 }
 

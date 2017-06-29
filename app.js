@@ -26,7 +26,20 @@ var BLReviews = require(directoryPath + 'BusinessLayer/BLReviews.js');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-var objBLReviews = new BLReviews({},{});
+//### Create Static Routes
+app.use('/app',express.static('app'));
+app.use('/clientRouting',express.static('clientRouting'));
+app.use('/css',express.static('css'));
+app.use('/js',express.static('js'));
+app.use('/views',express.static('views'));
+app.use('/controllers',express.static('controllers'));
+app.use('/services',express.static('services'));
+app.use('/directives',express.static('directives'));
+app.use('/filters',express.static('filters'));
+app.use('/tests',express.static('tests'));
+
+//### Create Business Layer Object
+var objBLReviews = new BLReviews();
 
 //####################################### Begin Routes ##################################################
 
@@ -37,7 +50,12 @@ app.get('/',function(request,response){
 });
 
 //################ Begin Test Routes ######################
-//### [Route: /tests/postreviewtest] example: http://localhost:8888/tests/postreviewtest
+//### [Route: /tests/postreviewtest] example: http://localhost:8888/tests
+/*
+app.get('/tests',function(request,response){
+  response.sendFile(directoryPath + "tests/index.html");
+});
+
 app.get('/tests/postreviewtest',function(request,response){
   response.sendFile(directoryPath + "tests/postreviewtest.html");
 });
@@ -49,6 +67,8 @@ app.get('/tests/automatedTest',function(request,response){
 app.get('/tests/testClass',function(request,response){
   response.sendFile(directoryPath + "tests/testClass.js");
 });
+
+*/
 //################ End Test Routes ######################
 
 //################ Begin CRUD Routes ######################
@@ -79,7 +99,14 @@ app.post('/delete',function(request,response)
 
      //### Delete Path : /delete -> BLReviews.processUpdateorDelete -> DLReviews.runDelete 
 });
-//################ Begin CRUD Routes ######################
+//################ End CRUD Routes ######################
+
+//################ Begin Error Routes ######################
+app.get('*', function(request, response){
+   response.statusCode = 404;
+   response.sendFile(directoryPath + "views/errors/404.html");
+});
+//################ End Error Routes ######################
 
 //####################################### End Routes ##################################################
 

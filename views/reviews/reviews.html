@@ -1,0 +1,17 @@
+<div class="container-fluid text-center">
+    <h2> Product Reviews </h2>
+    <hr>
+    <reviewfilters></reviewfilters>
+    <!--// Data //-->
+    <div ng-repeat="item in data | filter:category | filter:subcategory | filter:productname| filter:productreview">
+            <p>
+            Category:  {{item.ProductCategory}}<br>
+            Sub-Category: {{item.ProductSubCategory}}<br>
+            Product Name: {{item.ProductName}}<br>
+            Rating: {{item.ProductRating}}<br>
+            Review:<br>{{item.ProductReview}}<br>
+            <hr>
+            </p>
+    </div>
+</div>
+
