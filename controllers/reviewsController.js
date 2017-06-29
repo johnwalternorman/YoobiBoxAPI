@@ -53,4 +53,33 @@ app.controller('reviewsController', function($scope, $http)
                 //$scope.keys = getColumnHeaders(Object.keys(response.data[0]));
             });
 
+            $scope.deleteDocument = function(documentId)
+            {
+                
+                var documentToDelete = $scope.data[documentId];
+
+                var deleteFilter={ProductCategory: documentToDelete.ProductCategory,ProductSubCategory: documentToDelete.ProductSubCategory,ProductName: documentToDelete.ProductName,UserName:documentToDelete.UserName};
+
+                $http.post("http://localhost:8888/delete?collection=reviews", JSON.stringify(deleteFilter), {headers: {'Content-Type': 'application/json'} })
+                .then(function(response) 
+                {
+                    //### Add Returned Status to the Scope
+                    $scope.status = response.data;
+                });
+
+                $http.post("http://localhost:8888/read?collection=reviews", JSON.stringify({}), {headers: {'Content-Type': 'application/json'} })
+                .then(function(response) 
+                {
+                    //### Add Returned Data to the Scope
+                    $scope.data = response.data;
+                    //### Add Returned Keys for the Data to the Scope
+                    $scope.keys = Object.keys(response.data[0]);
+                    //### Use the getColumnHeaders function to explicitly filter out column headers, for now using a standard filter at the view level
+                    //$scope.keys = getColumnHeaders(Object.keys(response.data[0]));
+                });
+                
+            }
+
+
+
 });

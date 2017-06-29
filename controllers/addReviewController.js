@@ -4,16 +4,15 @@ app.controller('addReviewController', function($scope, $http)
     {
             //### For now, I have hardcoded a UserName in the Review Object
 
-            alert("Posting Review");
             var newCategory ={ProductCategory: $scope.txtCategory};
             console.log(JSON.stringify(newCategory));
-            var newSubCategory ={ProductCategory: $scope.txtCategory,ProdcutSubCategory: $scope.txtSubCategory};
+            var newSubCategory ={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory};
             console.log(JSON.stringify(newSubCategory));
-            var newProduct ={ProductCategory: $scope.txtCategory,ProdcutSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName};
+            var newProduct ={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName};
             console.log(JSON.stringify(newProduct));
-            var newReview={ProductCategory: $scope.txtCategory,ProdcutSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview,UserName:"J"};
+            var newReview={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview,UserName:"J"};
             //### For debugging purposes, removing the UserName
-            var newReviewWithoutUserName={ProductCategory: $scope.txtCategory,ProdcutSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview};
+            var newReviewWithoutUserName={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview};
             console.log(JSON.stringify(newReviewWithoutUserName));
 
             //### Post Category
