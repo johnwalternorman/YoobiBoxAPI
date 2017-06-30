@@ -132,7 +132,8 @@ BLReviews.prototype.processUpdateOrDelete = function(request,response,action)
 
     //### Create Filter
     var filter = {"ProductCategory":ProductCategory,"ProductSubCategory":ProductSubCategory,"ProductName":ProductName,"UserName":UserName};
-
+    console.log(JSON.stringify(filter));
+    console.log(JSON.stringify(postData));
 
     //### Send to appropriate action
     if(action == "delete")

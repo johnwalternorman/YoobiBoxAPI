@@ -1,4 +1,4 @@
-<div style="align-self:center" ng-controller="addReviewController">
+<div style="align-self:center">
     
     Category:<input type="text" ng-model="txtCategory"><br>
     Sub-Category:<input type="text" ng-model="txtSubCategory"><br>
@@ -6,9 +6,9 @@
     Product Rating:<input type="text" ng-model="txtProductRating"><br>
     Product Review:<input type="text" ng-model="txtProductReview"><br>
     <br>
-    <button ng-click="postReview()">Post your review</button>
+    <button ng-click="postReview(txtCategory,txtSubCategory,txtProductName,txtProductRating,txtProductReview)">Post your review</button>
     <br>
     <br>
-    {{data}}
+    {{responseData}}
     <br>
 </div>

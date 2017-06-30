@@ -82,6 +82,19 @@ app.directive("modalpopup", function() {
    };
 });
 
+app.directive("modalpopupparentscope", function() {
+   return {
+        /*
+        The restict option below, only allows for the directive to be used as an Element:
+        */
+        //'./views/partials/navigation.html'
+
+        restrict: "EACM",
+        scope: false,
+        templateUrl: '/directives/modal.html',
+   };
+});
+
 
 
 

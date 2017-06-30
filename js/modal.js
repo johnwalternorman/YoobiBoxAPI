@@ -10,13 +10,6 @@
                  {
                      $("#ModalPopUp").hide();
                  });
-                 //### Close Modal PopUp when anywhere but the PopUp is clicked.
-                 $(window).click(function(e) {
-                     if(e.target.id == "ModalPopUp")
-                     {
-                         $("#ModalPopUp").hide();
-                     }
-                });
 			});
 
         

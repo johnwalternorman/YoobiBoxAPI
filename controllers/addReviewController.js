@@ -1,6 +1,6 @@
 app.controller('addReviewController', function($scope, $http) 
 {
-    $scope.postReview = function()
+    $scope.postReview = function(txtCategory,txtSubCategory,txtProductName,txtProductRating,txtProductReview)
     {
             //### For now, I have hardcoded a UserName in the Review Object
 
@@ -38,7 +38,7 @@ app.controller('addReviewController', function($scope, $http)
             .then(function(response) 
             {
                 //### Add Returned Data to the Scope
-                $scope.keys = response.data;
+                $scope.data = response.data;
                 //### Add Returned Keys for the Data to the Scope
                 $scope.keys = Object.keys(response.data[0]);
 

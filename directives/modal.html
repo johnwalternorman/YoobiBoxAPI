@@ -1,16 +1,15 @@
         <link rel="stylesheet" type="text/css" href="/css/modal.css">
         <!-- Trigger/Open The Modal -->
-        <a id="myBtn">{{modalbuttontext}}</a>
-
+        x<a id="myBtn">{{modalbuttontext}}</a>
         <!-- The Modal -->
         <div id="ModalPopUp" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <span id="btnClose" class="close">&times;</span>
+                    <span ng-click="cancelUpdate()" id="btnClose" class="close">&times;</span>
                     <h3>{{modalheadertext}}</h3>
                 </div>
-                <div class="modal-body">
+                <div = class="modal-body">
                     <div ng-include="modalview"></div>
                 </div>
                 <div class="modal-footer">
