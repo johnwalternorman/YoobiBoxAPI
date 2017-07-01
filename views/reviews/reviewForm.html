@@ -1,0 +1,32 @@
+ <link rel="stylesheet" type="text/css" href="/css/modal.css">
+        <!-- Trigger/Open The Modal -->
+        <a id="myBtn">{{modalbuttontext}}</a>
+        <!-- The Modal -->
+        <div id="ModalPopUp" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span ng-click="cancelUpdate()" id="btnClose" class="close">&times;</span>
+                    <h3>{{modalheadertext}}</h3>
+                </div>
+                <div = class="modal-body">
+                    <div style="align-self:center">
+                        Category:<input id="productCategory" type="text" ng-model="txtCategory"><br>
+                        Sub-Category:<input id="productSubCategory" type="text" ng-model="txtSubCategory"><br>
+                        Product Name:<input id="productName" type="text" ng-model="txtProductName"><br>
+                        Product Rating:<input id="productRating" type="text" ng-change="recordChange(txtProductRating,txtProductReview)" ng-model="txtProductRating"><br>
+                        Product Review:<input id="productReview"type="text" ng-change="recordChange(txtProductRating,txtProductReview)" ng-model="txtProductReview"><br>
+                        <br>
+                        <button id="btnPost" ng-click="postReview()">Post your review</button>
+                        <br>
+                        {{responseData}}
+                        <br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{modalfootertext}}
+                </div>
+            </div>
+        </div>
+        <script src="/js/modal.js"></script>
+

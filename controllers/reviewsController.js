@@ -33,6 +33,13 @@ var getColumnHeaders = function(tempColumns)
 app.controller('reviewsController', function($scope, $http) 
 {
 
+
+            $scope.recordChange = function(rating,review)
+            {
+                $scope.txtProductRating = rating;
+                $scope.txtProductReview = review;
+            }
+
             var refreshData = function()
             {
                 $http.post("http://localhost:8888/read?collection=reviews", JSON.stringify({}), {headers: {'Content-Type': 'application/json'} })
@@ -79,12 +86,11 @@ app.controller('reviewsController', function($scope, $http)
                  $scope.txtProductRating = "";
                  $scope.txtProductReview = "";
             }
-            
+
             $scope.deleteOrUpdateDocument = function(documentId,action)
             {
                 
                 var documentToDelete = $scope.data[documentId];
-
                 var updateOrDeleteFilter={ProductCategory: documentToDelete.ProductCategory,ProductSubCategory: documentToDelete.ProductSubCategory,ProductName: documentToDelete.ProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview,UserName:"J"};
 
                 $http.post("http://localhost:8888/"+ action +"?collection=reviews", JSON.stringify(updateOrDeleteFilter), {headers: {'Content-Type': 'application/json'} })
@@ -96,28 +102,29 @@ app.controller('reviewsController', function($scope, $http)
                 refreshData();
             }
 
-            $scope.postReview = function(txtCategory,txtSubCategory,txtProductName,txtProductRating,txtProductReview)
+            $scope.postReview = function()
             {
+                alert($scope.txtProductReview);
                 if($scope.updateReady == true)
                 {
                     $scope.updateReady = false;
                     $scope.deleteOrUpdateDocument($scope.updateId,"update");
                     $scope.updateId ="";
                     refreshData();
+                    $scope.cancelUpdate();
                 }
                 else
                 {
-                    alert("addnew");
                     //### For now, I have hardcoded a UserName in the Review Object
-                    var newCategory ={ProductCategory:txtCategory};
+                    var newCategory ={ProductCategory:$scope.txtCategory};
                     console.log(JSON.stringify(newCategory));
-                    var newSubCategory ={ProductCategory: txtCategory,ProductSubCategory: txtSubCategory};
+                    var newSubCategory ={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory};
                     console.log(JSON.stringify(newSubCategory));
-                    var newProduct ={ProductCategory: txtCategory,ProductSubCategory: txtSubCategory,ProductName: txtProductName};
+                    var newProduct ={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory,ProductName: $scope.txtProductName};
                     console.log("np" + JSON.stringify(newProduct));
-                    var newReview={ProductCategory: txtCategory,ProductSubCategory: txtSubCategory,ProductName:txtProductName,ProductRating:txtProductRating,ProductReview:txtProductReview,UserName:"J"};
+                    var newReview={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory,ProductName:$scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview,UserName:"J"};
                     //### For debugging purposes, removing the UserName
-                    var newReviewWithoutUserName={ProductCategory: txtCategory,ProductSubCategory: txtSubCategory,ProductName: txtProductName,ProductRating:txtProductRating,ProductReview:txtProductReview};
+                    var newReviewWithoutUserName={ProductCategory:$scope.txtCategory,ProductSubCategory:$scope.txtSubCategory,ProductName: $scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview};
                     console.log("npwun" + JSON.stringify(newReviewWithoutUserName));
 
                     //### Post Category
