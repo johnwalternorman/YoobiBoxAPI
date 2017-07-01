@@ -22,7 +22,6 @@ The replace option MUST be used with the comment option
     };
 });
 
-
 app.directive("howdirective", function() {
    return {
         /*
@@ -38,7 +37,6 @@ app.directive("howdirective", function() {
         template : "<h1>How Directive</h1>"
    };
 });
-
 
 app.directive("whydirective", function() {
    return {
@@ -59,34 +57,6 @@ app.directive("reviewfilters", function() {
         restrict: "E",
         scope: false,
         templateUrl: '/directives/reviewFilters.html',
-   };
-});
-
-app.directive("modalpopup", function() {
-   return {
-        /*
-        The restict option below, only allows for the directive to be used as an Element:
-        */
-        //'./views/partials/navigation.html'
-
-        restrict: "EACM",
-        scope: 
-        {
-            modalbuttontext: '=',
-            modalheadertext: '=',
-            modalview: '=',
-            modalfootertext: '=',
-            modaldata: '='
-        },
-        templateUrl: '/directives/modal.html',
-   };
-});
-
-app.directive("modalpopupparentscope", function() {
-   return {
-        restrict: "EACM",
-        scope: false,
-        templateUrl: '/directives/modal.html',
    };
 });
 
