@@ -15,7 +15,7 @@ API to facilitate creating products/company pages and reviews for them.
  #This command prompts you for a number of things, such as the name and version of your application. For now, you can simply hit RETURN to accept the defaults for most of them, except for entry point, for that enter app.js:
  npm init
  
- entry point: (app.js)
+ entry point: (ServerRouting.js)
  
  npm install express --save
  
@@ -23,7 +23,7 @@ API to facilitate creating products/company pages and reviews for them.
  
  ### You are now ready to start the app by typing the following at a command prompt
  
- nodejs app.js
+ nodejs ServerRouting.js
  
  ### now go to http://localhost:8888 in your browser
 

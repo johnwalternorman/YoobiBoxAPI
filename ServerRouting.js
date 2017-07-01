@@ -2,12 +2,13 @@
 /*
 
 ### Example Test using POSTMAN ###
+*** NOTE: http://localhost:8000 in the comments below should be the URL your server is running under, if you are running it locally, then it's probably correct already.
 Method = POST,
-URL = http://localhost:8888/create?collection=categories 
+URL = http://localhost:8000/create?collection=categories 
 Body = Raw
 data to submit = {"ProductCategory":"Movie"}
 Content-type = JSON(application/json)
-(Then chage the URL to http://localhost:8888/read?collection=categories and re-send the request to see the category you just created)
+(Then chage the URL to http://localhost:8000/read?collection=categories and re-send the request to see the category you just created)
 
 Full Review Object Example : {"ProductCategory":"Movie","ProductSubCategory":"Comedy","ProductName":"Some Funny Movie","ProductRating":10,"ProductReview":"Very Funny Movie","UserName":"J"}
 
@@ -111,9 +112,9 @@ app.get('*', function(request, response){
 //####################################### End Routes ##################################################
 
 //### Start Application on port 8000
-app.listen(8888,function()
+app.listen(8000,function()
 {
   //### Log that the Application has started
-  console.log("Started on PORT 8888");
+  console.log("Started on PORT 8000");
 });
 

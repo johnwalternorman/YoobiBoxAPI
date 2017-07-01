@@ -35,7 +35,7 @@ app.controller('reviewsController', function($scope, $http)
 
             var refreshData = function()
             {
-                $http.post("http://localhost:8888/read?collection=reviews", JSON.stringify({}), {headers: {'Content-Type': 'application/json'} })
+                $http.post("/read?collection=reviews", JSON.stringify({}), {headers: {'Content-Type': 'application/json'} })
                 .then(function(response) 
                 {
                     //### Add Returned Data to the Scope
@@ -86,7 +86,7 @@ app.controller('reviewsController', function($scope, $http)
                 var documentToDelete = $scope.data[documentId];
                 var updateOrDeleteFilter={ProductCategory: documentToDelete.ProductCategory,ProductSubCategory: documentToDelete.ProductSubCategory,ProductName: documentToDelete.ProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview,UserName:"J"};
 
-                $http.post("http://localhost:8888/"+ action +"?collection=reviews", JSON.stringify(updateOrDeleteFilter), {headers: {'Content-Type': 'application/json'} })
+                $http.post("/"+ action +"?collection=reviews", JSON.stringify(updateOrDeleteFilter), {headers: {'Content-Type': 'application/json'} })
                 .then(function(response) 
                 {
                     //### Add Returned Status to the Scope
@@ -120,22 +120,22 @@ app.controller('reviewsController', function($scope, $http)
                     console.log("npwun" + JSON.stringify(newReviewWithoutUserName));
 
                     //### Post Category
-                    $http.post("http://localhost:8888/create?collection=categories", JSON.stringify(newCategory), {headers: {'Content-Type': 'application/json'} })
+                    $http.post("/create?collection=categories", JSON.stringify(newCategory), {headers: {'Content-Type': 'application/json'} })
                     .then(function(response) 
                     {
                         console.log(JSON.stringify(newSubCategory));
                         //### Post Sub-Category
-                        $http.post("http://localhost:8888/create?collection=subcategories", JSON.stringify(newSubCategory), {headers: {'Content-Type': 'application/json'} })
+                        $http.post("/create?collection=subcategories", JSON.stringify(newSubCategory), {headers: {'Content-Type': 'application/json'} })
                         .then(function(response) 
                         {
                             console.log(JSON.stringify(newProduct));
                             //### Post Product
-                            $http.post("http://localhost:8888/create?collection=products", JSON.stringify(newProduct), {headers: {'Content-Type': 'application/json'} })
+                            $http.post("/create?collection=products", JSON.stringify(newProduct), {headers: {'Content-Type': 'application/json'} })
                             .then(function(response) 
                             {
                                 console.log(JSON.stringify(newReview));
                                 //### Post Review
-                                $http.post("http://localhost:8888/create?collection=reviews", JSON.stringify(newReview), {headers: {'Content-Type': 'application/json'} })
+                                $http.post("/create?collection=reviews", JSON.stringify(newReview), {headers: {'Content-Type': 'application/json'} })
                                 .then(function(response) 
                                 {
                                 console.log(JSON.stringify({}));
