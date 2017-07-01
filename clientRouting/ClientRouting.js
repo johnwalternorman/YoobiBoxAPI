@@ -1,26 +1,5 @@
 
 app.config(function($routeProvider){
-    
-    /*var url = window.location.href;
-    var args = url.split('#').pop().split('=').pop();
-    var cf = function(args2){
-        var args2 = args2.replace("/","");
-        args2 = args2.replace("xx","");
-        alert(args);
-        alert(args2);
-        var c = {controller: args2 + "Controller",
-        templateUrl : "views/" + args2 + ".html"};
-        return c;
-    };
-
-    var fourohfour = function(args3)
-    {
-        alert(args3);
-        var c = {template:"YO"};
-        return c;
-    };
-    alert( window.location.href);
-    */
 
     $routeProvider
     .when(" ", {
@@ -80,7 +59,6 @@ app.config(function($routeProvider){
              controller: "loginController",
              templateUrl : "views/standard/login.html"
     })
-    //.when(args, cf(args));
     .otherwise({
         controller: "404",
         templateUrl: "views/errors/404.html"
