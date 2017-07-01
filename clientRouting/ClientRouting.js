@@ -28,7 +28,6 @@ app.config(function($routeProvider){
               var parameterName;
               parameterName = urlattr.name;
               parameterName =  parameterName.replace(":","");
-              //alert(templateName);
               return 'views/standard/' + parameterName + '.html';
             }
     })
@@ -43,7 +42,6 @@ app.config(function($routeProvider){
               var parameterName;
               parameterName = urlattr.name;
               parameterName = parameterName.replace(":","");
-              //alert(templateName);
               return 'views/purecontent/' + parameterName + '.html';
             }
     })
