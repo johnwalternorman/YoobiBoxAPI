@@ -51,7 +51,7 @@ app.config(function($routeProvider){
     })
     .when('/reviewstable', {
              controller: "reviewsController",
-             templateUrl : "views/reviews/reviewstable.html"
+             templateUrl : "views/reviews/reviewsTable.html"
     })
     .when('/login', {
              controller: "loginController",
