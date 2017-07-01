@@ -33,13 +33,6 @@ var getColumnHeaders = function(tempColumns)
 app.controller('reviewsController', function($scope, $http) 
 {
 
-
-            $scope.recordChange = function(rating,review)
-            {
-                $scope.txtProductRating = rating;
-                $scope.txtProductReview = review;
-            }
-
             var refreshData = function()
             {
                 $http.post("http://localhost:8888/read?collection=reviews", JSON.stringify({}), {headers: {'Content-Type': 'application/json'} })
@@ -104,7 +97,6 @@ app.controller('reviewsController', function($scope, $http)
 
             $scope.postReview = function()
             {
-                alert($scope.txtProductReview);
                 if($scope.updateReady == true)
                 {
                     $scope.updateReady = false;

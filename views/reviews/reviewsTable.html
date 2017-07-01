@@ -2,24 +2,24 @@
   <reviewfilters></reviewfilters>
     <!--// Data //-->
     <table border="1">
-  <!--//Column Headers //-->
-  <tr style="background-color:crimson;color:white">
-      <!--// Filter out ID and UserName Fields from header row //-->
-      <td></td> 
-      <td></td>
-      <td ng-repeat="x in keys | filter:'product'">{{x}}</td>
-  </tr>
-  <tr>
-  </tr>
-  <!--// Data //-->
-  <tr ng-repeat="item in data | filter:category | filter:subcategory | filter:productname| filter:productreview">
-    <td><a href ng-click="deleteOrUpdateDocument($index,'delete')">X</a></td>
-    <td onClick='$("#myBtn").click()' ng-click="prepareUpdate($index)">edit</td>
-    <td>{{item.ProductCategory}}</td>
-    <td>{{item.ProductSubCategory}}</td>
-    <td>{{item.ProductName}}</td>
-    <td>{{item.ProductRating}}</td>
-    <td>{{item.ProductReview}}</td>
-  </tr>
-</table>
+        <!--//Column Headers //-->
+        <tr style="background-color:crimson;color:white">
+            <!--// Filter out ID and UserName Fields from header row //-->
+            <td></td> 
+            <td></td>
+            <td ng-repeat="x in keys | filter:'product'">{{x}}</td>
+        </tr>
+        <tr>
+        </tr>
+        <!--// Data //-->
+        <tr ng-repeat="item in data | filter:category | filter:subcategory | filter:productname| filter:productreview">
+          <td onClick='$("#myBtn").click()' ng-click="prepareUpdate($index)">edit</td>
+          <td><a href ng-click="deleteOrUpdateDocument($index,'delete')">delete</a></td>
+          <td>{{item.ProductCategory}}</td>
+          <td>{{item.ProductSubCategory}}</td>
+          <td>{{item.ProductName}}</td>
+          <td>{{item.ProductRating}}</td>
+          <td>{{item.ProductReview}}</td>
+        </tr>
+    </table>
 </div>

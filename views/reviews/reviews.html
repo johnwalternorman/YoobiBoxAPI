@@ -8,6 +8,9 @@
             Product Name: {{item.ProductName}}<br>
             Rating: {{item.ProductRating}}<br>
             Review:<br>{{item.ProductReview}}<br>
+           
+            <a onClick='$("#myBtn").click()' ng-click="prepareUpdate($index)">edit</a> /
+            <a href ng-click="deleteOrUpdateDocument($index,'delete')">delete</a>
             <hr>
             </p>
     </div>
