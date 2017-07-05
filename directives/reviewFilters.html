@@ -10,30 +10,42 @@
     <br>
     <!--// Category Filter //-->
     Category:
-     <select ng-model="category">
+    <select ng-change="showCategory(true)" ng-model="category">
       <option ng-repeat="item in data" value="{{item.ProductCategory}}">
         {{item.ProductCategory}}
       </option>
     </select>
     <!--// Sub-Category Filter //-->
-    Sub-Category:<select ng-model="subcategory">
+    Sub-Category:
+    <select ng-change="showSubCategory(true)" ng-model="subcategory">
       <option ng-repeat="item in data | filter:category" value="{{item.ProductSubCategory}}">
         {{item.ProductSubCategory}}
       </option>
     </select>
 
     <!--// Product Filters //-->
-    Product:<select ng-model="productname">
+    Product:<select ng-change="showProductName(true)"  ng-model="productname">
       <option ng-repeat="item in data | filter:subcategory" value="{{item.ProductName}}">
         {{item.ProductName}}
       </option>
     </select>
 
+    
     <!--// Keyword Filter //-->
     Product Review Keyword:
-    <input type="text" ng-model="productreview">
+    <input type="text" ng-change="showProductReview(true)"  ng-model="productreview">
     <br>
+    <div>
+
+    <!--// Remove Filters //-->
+    <div style="padding-top: 20px;">
+      <input type="submit" ng-click="removeCategoryFilter()" ng-show="cancelFilterCategory" ng-value='"Category: " + category + "  (x) " '></button>
+      <input type="submit" ng-click="removeSubCategoryFilter()" ng-show="cancelFilterSubCategory" ng-value='"Sub-Category: " + subcategory + "  (x) " '></button>
+      <input type="submit" ng-click="removeProductNameFilter()" ng-show="cancelFilterProductName" ng-value='"Product Name: " + productname + "  (x) " '></button>
+      <input type="submit" ng-click="removeProductReviewFilter()" ng-show="cancelFilterProductReview" ng-value='"Key Word: " + productreview + "  (x) " '></button>
+    </div>
     <!--// Results //-->
+    </div>
     <br>
     <span style="background-color: black;width:inherit;color:white;display:block;overflow:hidden;">Results</span>
     <br>

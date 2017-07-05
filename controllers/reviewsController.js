@@ -57,6 +57,53 @@ app.controller('reviewsController', function($scope, $http)
             //### Initial pull of data
             refreshData();
 
+            //### Intialize Cancel Filter Buttons so they do not show
+            $scope.cancelFilterCategory = false;
+            $scope.cancelFilterSubCategory = false;
+            $scope.cancelFilterProductName = false;
+            $scope.cancelFilterProductReview = false;
+
+            //### Functions that set visibility of Cancel Filter Buttons
+            $scope.showCategory = function(show){
+                $scope.cancelFilterCategory = show;  
+            };
+             $scope.showSubCategory = function(show){
+                $scope.cancelFilterSubCategory = show;  
+            };
+             $scope.showProductName = function(show){
+                $scope.cancelFilterProductName = show;  
+            };
+             $scope.showProductReview = function(show){
+                $scope.cancelFilterProductReview = show;  
+            };
+            
+            //### Functions that cance Filters individually and reset the buttons back to hiden
+            $scope.removeCategoryFilter = function()
+            {
+                $scope.showCategory(false);
+                $scope.category = "";
+            }
+
+             $scope.removeSubCategoryFilter = function()
+            {
+                $scope.showSubCategory(false);
+                $scope.subcategory = "";
+            }
+
+             $scope.removeProductNameFilter = function()
+            {
+                $scope.showProductName(false);
+                $scope.productname = "";
+            }
+            
+             $scope.removeProductReviewFilter = function()
+            {
+                $scope.showProductReview(false);
+                $scope.productreview = "";
+            }
+
+
+        //#### Begin Update Functions ##########################
             $scope.prepareUpdate = function(documentId)
             {
                  $scope.updateReady = true;
@@ -94,7 +141,10 @@ app.controller('reviewsController', function($scope, $http)
                 });
                 refreshData();
             }
+        //#### End Update Functions ##########################
 
+
+        //### Post Review Function
             $scope.postReview = function()
             {
                 if($scope.updateReady == true)
