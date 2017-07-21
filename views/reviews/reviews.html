@@ -1,0 +1,18 @@
+<div class="container-fluid text-center">
+    <reviewfilters></reviewfilters>
+    <!--// Data //-->
+    <div ng-repeat="item in data | filter:category | filter:subcategory | filter:productname| filter:productreview">
+            <p>
+            Category:  {{item.ProductCategory}}<br>
+            Sub-Category: {{item.ProductSubCategory}}<br>
+            Product Name: {{item.ProductName}}<br>
+            Rating: {{item.ProductRating}}<br>
+            Review:<br>{{item.ProductReview}}<br>
+           
+            <a onClick='$("#myBtn").click()' ng-click="prepareUpdate($index)">edit</a> /
+            <a href ng-click="deleteOrUpdateDocument($index,'delete')">delete</a>
+            <hr>
+            </p>
+    </div>
+</div>
+

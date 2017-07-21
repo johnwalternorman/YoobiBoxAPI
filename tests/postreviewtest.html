@@ -2,51 +2,109 @@
   <head>
     <title>Product Review API Test</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     <script src="testClass.js"></script>
     <script>
 
-        $(document).ready(function(){
+        //### Create Callback Object
+        var objTestFunctions = new testFunctions();
 
-            //### Hide Results Div until data is returned
-             $("#returnedData").hide();
+        $(document).ready(function()
+              {
 
-            //### create variables to hold form fields
-            var product;
-            var review;
+                 //### Hide Results Div until data is returned
+                 $("#returnedData").hide();
+                
+                 //### create handlers for form submission
+                 $("#btnCreateCategory").click(function()
+                 {
+                   objTestFunctions.categoryCallBack("create");
+                 });
 
-            //### create handler for form submission
-            $("#btnPostReview").click(function(){
+                 $("#btnCreateSubCategory").click(function()
+                 {
+                   objTestFunctions.subCategoryCallBack("create");
+                 });
 
-              //### Grab product value
-              product=$("#product").val();
-              //### Grab review value
-              review=$("#review").val();
+                 $("#btnCreateProduct").click(function()
+                 {
+                   objTestFunctions.productCallBack("create");
+                 });
 
-              //### Post values as JSON to /postreview endpoint
-              $.post("/postreview",{"product": product,"review": review}, function(data){
-            
-                //### Display Data in the returned data div
-                $("#returnedData").html($("#returnedData").html() + data);
-                $("#returnedData").show();
-                  
-              });
-            });
+                 $("#btnPostReview").click(function()
+                 {
+                   objTestFunctions.reviewCallBack("create");
+                 });
+
+                 $("#btnUpdateReview").click(function()
+                 {
+                   objTestFunctions.reviewCallBack("update");
+                 });
+
+                 $("#btnDeleteReview").click(function()
+                 {
+                   objTestFunctions.reviewCallBack("delete");
+                 });
+
+                 $("#btnReadCollection").click(function()
+                 {
+                     objTestFunctions.readCallBack("read");
+                 });
           });
 
-      
     </script>
   </head>
   <body>
 
-        <h1>Endpoint test: postreview</h1>
-        <div id="testForm">
-          Product: <input type="text" id="product" size="60"><br>
-          Review: <textarea id="review"></textarea><br>
-          <input type="button" id="btnPostReview" value="Post Review">
-        </div>
-
-        
-        <div id="returnedData">
+         <div id="returnedData">
           <h1>Returned Data</h1>
         </div>
+
+        <h1>Endpoint test: Create Category - /create?collection=categories</h1>
+        <div id="testFormC">  
+          Product Category: <input type="text" id="CproductCategory" size="60"><br>
+          <input type="button" id="btnCreateCategory" value="Create Category">
+        </div>
+
+        <h1>Endpoint test: Create SubCategory - /create?collection=subcategories</h1>
+        <div id="testFormSC">  
+          Product Category: <input type="text" id="SCproductCategory" value="TestCategory" size="60"><br>
+          Product SubCategory: <input type="text" id="SCproductSubCategory" size="60"><br>
+          <input type="button" id="btnCreateSubCategory" value="Create SubCategory">
+        </div>
+
+        <h1>Endpoint test: Create Product - /create?collection=products</h1>
+        <div id="testFormP">  
+          Product Category: <input type="text" id="PproductCategory" value="TestCategory" size="60"><br>
+          Product SubCategory: <input type="text" id="PproductSubCategory" value="TestSubCategory" size="60"><br>
+          Product Name: <input type="text" id="PproductName" size="60"><br>
+          <input type="button" id="btnCreateProduct" value="Create Product">
+        </div>
+
+        <h1>Endpoint test: Post, Update, or Delete a review - /[create/update/delete]?collection=reviews</h1>
+        <div id="testForm">  
+          Product Category: <input type="text" id="productCategory" value="TestCategory" size="60"><br>
+          Product SubCategory: <input type="text" id="productSubCategory" value="TestSubCategory" size="60"><br>
+          Product Name: <input type="text" id="productName" value="TestProduct" size="60"><br>
+          Product Rating(1-10): <input type="text" id="productRating" size="2"><br>
+          Product Review: <textarea id="productReview"></textarea><br>
+          <input type="hidden" id="UserName" value="Tester">
+          <input type="button" id="btnPostReview" value="Post Review">
+          <input type="button" id="btnUpdateReview" value="Update Review">
+          <input type="button" id="btnDeleteReview" value="Delete Review">
+        </div>
+
+        <h1>Endpoint test: Read Documents - /read?collection=[CollectionName]</h1>
+        <div id="testFormR">  
+          <select id="collection">
+            <option value="categories">Categories</option>
+            <option value="subcategories">SubCategories</option>
+            <option value="products">Products</option>
+            <option selected value="reviews">Reviews</option>
+          </select>
+          <br>
+          Filter: <input type="text" id="filter" value="{}" size="60"><br>
+          <input type="button" id="btnReadCollection" value="Read Documents">
+        </div>
+        
   </body>
 </html>

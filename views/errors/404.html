@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--//  Begin Metadata Area //-->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--//  End Metadata Area //-->
+
+    <!--//  Begin third party frameworks to be loaded before HTML is rendered //-->
+        <!-- Bootstrp CSS - Latest compiled and minified CSS -->
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <!-- Bootstrap Library - Latest compiled JavaScript -->
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- W3.js Library - Latest compiled JavaScript -->
+          <script src="/js/w3.js"></script>
+    <!--//  End third party frameworks to be loaded before HTML is rendered //-->
+
+    <!--//  Begin custom scripts to be loaded before HTML is rendered //-->
+
+    <!--//  End custom scripts to be loaded before HTML is rendered //-->
+
+    <!--//  Begin custom CSS Style scripts to be loaded before HTML is rendered //-->
+        <link rel="stylesheet" type="text/css" href="/css/mainCSS.css">
+    <!--//  End custom CSS Style scripts to be loaded before HTML is rendered //-->
+  </head>
+  <body>
+    <!--// Begin Boostrap container Div //-->
+      <div class="container-fluid">
+          <!--//  Begin Header Area (optional, the header can also just be part of the content) //-->
+            <div w3-include-html="/views/partials/header.html"></div> 
+          <!--//  End Header Area //-->
+
+          <!--//  Begin Navigation Area //-->
+            <div w3-include-html="/views/partials/navigation.html"></div> 
+          <!--//  End Navigation Area //-->
+
+          <!--//#############  Begin Content Area #################//-->
+            <div>
+                <br>
+                Page Not Found
+            </div> 
+          <!--//##############  End Content Area ##################//-->
+
+          <!--//  Begin Footer Area (optional, the header can also just be part of the content) //-->
+            <div w3-include-html="/views/partials/footer.html"></div> 
+          <!--//  End Footer Area //-->
+      <div>
+    <!--// End Boostrap container Div //-->
+  </body>
+  <!--// Include Partials //-->
+  <script>
+    w3.includeHTML();
+  </script>
+</html>
