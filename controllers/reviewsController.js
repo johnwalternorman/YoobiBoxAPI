@@ -2,7 +2,16 @@
 //### Exampleresponse that will be returned from API call: 
 //#### [{"_id":"594960a5e911d770882db375","ProductCategory":"Movie","ProductSubCategory":"Action","ProductName":"All about the Benjamins","ProductRating":10,"ProductReview":"Hillarious!!! Mike Epps has you laughing the entire time, All-Star cast, plus a cameo from Anthony Michael Hall ","UserName":"J"},{"_id":"594aa6c369ca2c22cf8e93f4","ProductCategory":"Movie","ProductSubCategory":"Dramedy","ProductName":"Dope","ProductRating":9,"ProductReview":"Great Movie, very original and a great soundtrack","UserName":"J"}]
 
-var getColumnHeaders = function(tempColumns)
+
+
+//### TableHelper Class Constructor 
+function TableHelper(params)
+{
+
+}
+
+//### Add getColumnHeaders method to the TableHelper Class
+TableHelper.prototype.getColumnHeaders =  function($scope,tempColumns)
 {
       //### Create Variables
       var columnHeaders = "";
@@ -40,10 +49,18 @@ app.controller('reviewsController', function($scope, $http)
                 {
                     //### Add Returned Data to the Scope
                     $scope.data = response.data;
+
+
+
                     //### Add Returned Keys for the Data to the Scope
                     $scope.keys = Object.keys(response.data[0]);
+
+                                //###  OR  ####
+
+                    //### Create TableHelper Object
+                    //objTableHelper = new TableHelper({});
                     //### Use the getColumnHeaders function to explicitly filter out column headers, for now using a standard filter at the view level
-                    //$scope.keys = getColumnHeaders(Object.keys(response.data[0]));
+                    //$scope.keys = objTableHelper.getColumnHeaders($scope,Object.keys(response.data[0]));
                 });
             }
 
@@ -167,7 +184,7 @@ app.controller('reviewsController', function($scope, $http)
                     var newReview={ProductCategory: $scope.txtCategory,ProductSubCategory: $scope.txtSubCategory,ProductName:$scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview,UserName:"J"};
                     //### For debugging purposes, removing the UserName
                     var newReviewWithoutUserName={ProductCategory:$scope.txtCategory,ProductSubCategory:$scope.txtSubCategory,ProductName: $scope.txtProductName,ProductRating:$scope.txtProductRating,ProductReview:$scope.txtProductReview};
-                    console.log("npwun" + JSON.stringify(newReviewWithoutUserName));
+                    console.log("nrwun" + JSON.stringify(newReviewWithoutUserName));
 
                     //### Post Category
                     $http.post("/create?collection=categories", JSON.stringify(newCategory), {headers: {'Content-Type': 'application/json'} })
